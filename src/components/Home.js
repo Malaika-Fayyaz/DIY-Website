@@ -19,8 +19,11 @@ const Home = () => {
               Join thousands of makers sharing their creativity, learning new
               skills, and building beautiful things together. From woodworking
               to crafts, find inspiration for your next project!
-            </p>
+            </p>{" "}
             <div className="hero-buttons">
+              <Link to="/feed" className="btn btn-primary">
+                Explore Projects
+              </Link>
               <Link to="/register" className="btn btn-primary">
                 Start Creating
               </Link>

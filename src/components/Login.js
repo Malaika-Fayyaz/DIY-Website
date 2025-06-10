@@ -31,11 +31,8 @@ const Login = () => {
 
       // Store token in localStorage
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-
-      // Navigate to dashboard (for now we'll just show an alert)
-      alert("Login successful! Welcome to DIY Community!");
-      console.log("Login successful:", response.data);
+      localStorage.setItem("user", JSON.stringify(response.data.user)); // Navigate to feed page
+      navigate("/feed");
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong!");
     } finally {
