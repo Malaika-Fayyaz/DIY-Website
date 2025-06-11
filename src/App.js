@@ -10,6 +10,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Feed from "./components/Feed";
 import ProjectDetail from "./components/ProjectDetail";
+import CreateProject from "./components/CreateProject";
+import SavedProjects from "./components/SavedProjects";
 import "./App.css";
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/create" element={<CreateProject />} />
+          <Route path="/saved" element={<SavedProjects />} />
         </Routes>
       </div>
     </Router>

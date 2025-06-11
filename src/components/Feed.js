@@ -49,13 +49,16 @@ const Feed = () => {
         limit: "12",
         ...filters,
       });
-
       const response = await axios.get(
         `${API_BASE}/projects?${params}`,
         authHeaders
       );
+      console.log("Fetched projects:", response);
+      console.log("Response data:", response.data);
+      console.log("Projects array:", response.data.projects);
+      console.log("Full URL:", `${API_BASE}/projects?${params}`);
 
-      setProjects(response.data.projects);
+      setProjects(response.data.projects || []);
       setPagination({
         currentPage: response.data.currentPage,
         totalPages: response.data.totalPages,
@@ -339,6 +342,7 @@ const Feed = () => {
               <div className="projects-grid">
                 {projects.map((project) => (
                   <div key={project._id} className="project-card">
+                    {" "}
                     <div className="project-image">
                       <img
                         src={
@@ -347,6 +351,10 @@ const Feed = () => {
                           "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400"
                         }
                         alt={project.title}
+                        onError={(e) => {
+                          e.target.src =
+                            "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400";
+                        }}
                       />
                       <div className="project-badges">
                         <span
@@ -364,7 +372,6 @@ const Feed = () => {
                         )}
                       </div>
                     </div>
-
                     <div className="project-content">
                       <div className="project-header">
                         <h3 className="project-title">{project.title}</h3>
