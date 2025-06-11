@@ -149,7 +149,7 @@ const SavedProjects = () => {
                 <span className="brand-icon">🛠️</span>
                 <span className="brand-text">DIY Community</span>
               </Link>
-            </div>
+            </div>{" "}
             <nav className="nav-links">
               <Link to="/feed" className="nav-link">
                 Feed
@@ -159,6 +159,9 @@ const SavedProjects = () => {
               </Link>
               <Link to="/saved" className="nav-link active">
                 Saved
+              </Link>
+              <Link to={`/profile/${user.id}`} className="nav-link">
+                Profile
               </Link>
               <div className="user-menu">
                 <span className="user-greeting">Hello, {user.username}!</span>
@@ -258,11 +261,9 @@ const SavedProjects = () => {
                               </span>
                             </div>
                           </div>
-
                           <p className="project-description">
                             {project.description}
                           </p>
-
                           <div className="project-stats">
                             <div className="stat">
                               <span className="stat-icon">💰</span>
@@ -276,17 +277,21 @@ const SavedProjects = () => {
                               <span className="stat-icon">💬</span>
                               <span>{project.commentCount || 0}</span>
                             </div>
-                          </div>
-
+                          </div>{" "}
                           <div className="project-author">
                             <span className="author-text">
-                              by <strong>{project.author.username}</strong>
+                              by{" "}
+                              <Link
+                                to={`/profile/${project.author._id}`}
+                                className="author-link"
+                              >
+                                <strong>{project.author.username}</strong>
+                              </Link>
                             </span>
                             <span className="project-date">
                               {new Date(project.createdAt).toLocaleDateString()}
                             </span>
                           </div>
-
                           <div className="project-actions">
                             <button
                               onClick={() => handleLike(project._id)}

@@ -281,18 +281,23 @@ const ProjectDetail = () => {
               </div>
             </div>
             <div className="project-info">
-              <h1 className="project-title">{project.title}</h1>
+              <h1 className="project-title">{project.title}</h1>{" "}
               <div className="project-meta">
                 <span className="category">{project.category}</span>
                 <span className="author">
-                  by <strong>{project.author.username}</strong>
+                  by{" "}
+                  <Link
+                    to={`/profile/${project.author._id}`}
+                    className="author-link"
+                  >
+                    <strong>{project.author.username}</strong>
+                  </Link>
                 </span>
                 <span className="date">
                   {new Date(project.createdAt).toLocaleDateString()}
                 </span>
               </div>
               <p className="project-description">{project.description}</p>
-
               <div className="project-stats">
                 <div className="stat">
                   <span className="stat-label">Estimated Time:</span>
