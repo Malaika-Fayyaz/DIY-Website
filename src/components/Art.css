@@ -1,4 +1,3 @@
-
 .splash-container {
   position: fixed;
   top: 0;
@@ -24,28 +23,28 @@
 }
 
 .splash-red {
-  background-color: #d35d8a;
+  background-color: #8CB369;
   top: 30%;
   left: -50px;
   animation-delay: 0.1s;
 }
 
 .splash-blue {
-  background-color: #84c5ed;
+  background-color: #F4E285;
   top: 60%;
   right: -50px;
   animation-delay: 0.3s;
 }
 
 .splash-yellow {
-  background-color: #8fed96;
+  background-color: #F4A259;
   bottom: -50px;
   left: 40%;
   animation-delay: 0.5s;
 }
 
 .splash-purple {
-  background-color: #b19cd9;
+  background-color: #5B8E7D;
   top: -50px;
   left: 60%;
   animation-delay: 0.7s;
