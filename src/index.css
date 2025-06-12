@@ -9,6 +9,8 @@
   --light-gray: #f8f9fa;
   --dark-gray: #343a40;
   --text-dark: #2c3e50;
+  --text-medium: #6c757d;
+  --background-light: #f8f9fa;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
@@ -36,9 +38,21 @@ code {
 
 /* Global Styles */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 16px;
+  }
 }
 
 .btn {
@@ -52,6 +66,24 @@ code {
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn-primary {
@@ -65,15 +97,23 @@ code {
   box-shadow: var(--shadow-hover);
 }
 
+.btn-small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
 .btn-secondary {
   background: var(--warm-orange);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(244, 162, 89, 0.2);
 }
 
 .btn-secondary:hover {
   background: #e6924f;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: var(--shadow-hover), 0 0 0 1px rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .form-group {

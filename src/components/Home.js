@@ -100,15 +100,15 @@ const Home = () => {
               <div className="category-icon">🏠</div>
               <h3 className="category-title">Home Decor</h3>
               <p className="category-count">180+ Projects</p>
-            </div>
+            </div>{" "}
             <div className="category-card">
               <div className="category-icon">🧵</div>
-              <h3 className="category-title">Crafts & Sewing</h3>
+              <h3 className="category-title">Crafts & Arts</h3>
               <p className="category-count">320+ Projects</p>
             </div>
             <div className="category-card">
               <div className="category-icon">🌱</div>
-              <h3 className="category-title">Garden & Outdoor</h3>
+              <h3 className="category-title">Gardening</h3>
               <p className="category-count">150+ Projects</p>
             </div>
             <div className="category-card">
@@ -118,7 +118,7 @@ const Home = () => {
             </div>
             <div className="category-card">
               <div className="category-icon">🍳</div>
-              <h3 className="category-title">Kitchen & Food</h3>
+              <h3 className="category-title">Cooking & Baking</h3>
               <p className="category-count">120+ Projects</p>
             </div>
           </div>
