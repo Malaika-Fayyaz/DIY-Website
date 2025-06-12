@@ -134,6 +134,10 @@ const Profile = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
   const handleDelete = async (projectId) => {
     if (
       !window.confirm(
@@ -175,6 +179,11 @@ const Profile = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
   const formatCost = (cost) => {
     return cost > 0 ? `$${cost}` : "Free";
   };
@@ -461,9 +470,23 @@ const Profile = () => {
                               </span>
                             </div>
                           </div>
+<<<<<<< HEAD
                           <p className="project-description">
                             {project.description}
                           </p>
+=======
+<<<<<<< HEAD
+                          <p className="project-description">
+                            {project.description}
+                          </p>
+=======
+
+                          <p className="project-description">
+                            {project.description}
+                          </p>
+
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
                           <div className="project-stats">
                             <div className="stat-item">
                               <span>
@@ -484,6 +507,10 @@ const Profile = () => {
                             <div className="stat-item">
                               <span>👁️ {project.views || 0}</span>
                             </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
                           </div>{" "}
                           <div className="project-actions">
                             {profileData.user.isOwnProfile ? (
@@ -508,6 +535,15 @@ const Profile = () => {
                                 </Link>
                               </>
                             ) : (
+<<<<<<< HEAD
+=======
+=======
+                          </div>
+
+                          <div className="project-actions">
+                            {!profileData.user.isOwnProfile && (
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
                               <>
                                 <button
                                   onClick={() => handleLike(project._id)}
@@ -525,6 +561,10 @@ const Profile = () => {
                                 >
                                   {project.isSaved ? "🔖" : "📌"} Save
                                 </button>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
                                 <Link
                                   to={`/project/${project._id}`}
                                   className="btn btn-primary btn-small"
@@ -533,6 +573,19 @@ const Profile = () => {
                                 </Link>
                               </>
                             )}
+<<<<<<< HEAD
+=======
+=======
+                              </>
+                            )}
+                            <Link
+                              to={`/project/${project._id}`}
+                              className="btn btn-primary btn-small"
+                            >
+                              View Project
+                            </Link>
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
                           </div>
                         </div>
                       </div>

@@ -37,10 +37,19 @@ const Register = () => {
       setError("Password must be at least 6 characters long!");
       setLoading(false);
       return;
+<<<<<<< HEAD
     }
     try {
       const { confirmPassword, ...dataToSend } = formData;
       await axios.post("http://localhost:5000/api/auth/register", dataToSend);
+=======
+    }    try {
+      const { confirmPassword, ...dataToSend } = formData;
+      await axios.post(
+        "http://localhost:5000/api/auth/register",
+        dataToSend
+      );
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
 
       // Show success message and redirect to login
       alert("Registration successful! Please sign in with your new account.");
