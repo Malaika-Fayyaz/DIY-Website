@@ -1,0 +1,119 @@
+
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeOut 1.5s ease-in-out 2.5s forwards; 
+}
+
+/* Splash circles */
+.splash {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  animation: splash 2s ease-out forwards;
+}
+
+.splash-red {
+  background-color: #d35d8a;
+  top: 30%;
+  left: -50px;
+  animation-delay: 0.1s;
+}
+
+.splash-blue {
+  background-color: #84c5ed;
+  top: 60%;
+  right: -50px;
+  animation-delay: 0.3s;
+}
+
+.splash-yellow {
+  background-color: #8fed96;
+  bottom: -50px;
+  left: 40%;
+  animation-delay: 0.5s;
+}
+
+.splash-purple {
+  background-color: #b19cd9;
+  top: -50px;
+  left: 60%;
+  animation-delay: 0.7s;
+}
+
+
+@keyframes splash {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(20);
+    opacity: 1;
+  }
+}
+
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Paintbrush Rotation */
+.paintbrush {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  max-width: 80vw;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.rotate-once {
+  animation: spinOnce 3s ease-in-out forwards;
+}
+
+@keyframes spinOnce {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .paintbrush {
+    width: 180px;
+  }
+
+  .splash {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .paintbrush {
+    width: 130px;
+  }
+
+  .splash {
+    width: 50px;
+    height: 50px;
+  }
+}

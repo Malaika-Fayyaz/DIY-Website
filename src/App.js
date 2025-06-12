@@ -12,6 +12,7 @@ import ProjectDetail from "./components/ProjectDetail";
 import CreateProject from "./components/CreateProject";
 import SavedProjects from "./components/SavedProjects";
 import Profile from "./components/Profile";
+import Landing from "./components/Landing"; // Import this instead of Art
 import "./App.css";
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/feed" element={<Feed />} />
