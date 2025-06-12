@@ -9,7 +9,7 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              Welcome to <span className="brand-text">DIY Community</span>
+              Welcome to DIY Community
             </h1>
             <p className="hero-subtitle">
               Discover, Create, and Share Amazing DIY Projects with Fellow

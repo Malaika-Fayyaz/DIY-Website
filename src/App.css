@@ -286,11 +286,11 @@
 }
 
 .brand-text {
-  background: linear-gradient(45deg, var(--cream-yellow), var(--warm-orange));
-  -webkit-background-clip: text;
+  color: linear-gradient(45deg, var(--cream-yellow), var(--warm-orange));
+  -webkit-background-clip: text;  
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
+  background-clip: text; 
+  text-shadow: none; 
 }
 
 .hero-subtitle {
@@ -1049,24 +1049,17 @@
   border-bottom: 1px solid #e8ecef;
 }
 
-.project-stats .stat {
+.stat {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 10px;
-}
-
-.project-stats .stat-label {
-  font-size: 0.9em;
-  color: var(--text-medium);
-  margin-bottom: 5px;
-}
-
-.project-stats .stat-value {
-  font-size: 1.1em;
-  font-weight: 600;
+  gap: 6px;
+  font-size: 14px;
   color: var(--text-dark);
+  font-weight: 500;
+}
+
+.stat-icon {
+  font-size: 16px;
 }
 
 .project-author {
@@ -1110,19 +1103,19 @@
 .action-btn {
   background: transparent;
   border: 2px solid #e8ecef;
-  padding: 10px 16px;
-  border-radius: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
+  gap: 6px;
+  font-weight: 500;
+  white-space: nowrap;
   position: relative;
   overflow: hidden;
-  min-width: 80px;
-  justify-content: center;
+  z-index: 1;
 }
 
 .action-btn::before {
@@ -1172,6 +1165,32 @@
   background: linear-gradient(135deg, #e6924f, var(--warm-orange));
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 15px rgba(244, 162, 89, 0.4);
+}
+
+.action-btn.edit-btn {
+  border-color: var(--teal-blue);
+  background: linear-gradient(135deg, var(--teal-blue), var(--sage-green));
+  color: white;
+  box-shadow: 0 3px 10px rgba(91, 142, 125, 0.3);
+}
+
+.action-btn.edit-btn:hover {
+  background: linear-gradient(135deg, var(--sage-green), var(--teal-blue));
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(91, 142, 125, 0.4);
+}
+
+.action-btn.delete-btn {
+  border-color: var(--coral-red);
+  background: linear-gradient(135deg, var(--coral-red), #d63c47);
+  color: white;
+  box-shadow: 0 3px 10px rgba(188, 75, 81, 0.3);
+}
+
+.action-btn.delete-btn:hover {
+  background: linear-gradient(135deg, #d63c47, #c53030);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(188, 75, 81, 0.4);
 }
 
 /* Pagination */
@@ -1743,9 +1762,9 @@
 }
 
 .create-header .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .create-header .header-content {
@@ -1768,9 +1787,9 @@
 }
 
 .create-main .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .create-form {
@@ -1986,6 +2005,11 @@
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(188, 75, 81, 0.4);
+}
+
+.btn-small {
+  padding: 8px 16px;
+  font-size: 14px;
 }
 
 .btn-primary:disabled {
@@ -2240,7 +2264,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -2438,7 +2462,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .profile-stats-section .stats-grid {
     grid-template-columns: 1fr;
   }
@@ -2461,7 +2485,75 @@
 }
 
 /* Responsive Design for Feed Header */
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+  }
+}
+
+/* Desktop-specific Feed Button Positioning */
+@media (min-width: 993px) {
+  .feed-header {
+    padding: 20px 0; /* Increased padding for better vertical spacing */
+  }
+  
+  .feed-header .header-content {
+    padding: 0 40px; /* Increased horizontal padding for better spacing */
+  }
+  
+  .feed-header .nav-links {
+    gap: 40px; /* Increased gap to prevent overlap */
+    margin-left: auto; /* Push navigation to the right */
+  }
+  
+  .feed-header .nav-link.active {
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(91, 142, 125, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Removed transform: scale to prevent overlap */
+  }
+  
+  .feed-header .nav-link {
+    padding: 12px 24px; /* Adjusted padding for better click area */
+    font-size: 16px;
+    min-width: 90px;
+    text-align: center;
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  .feed-header .nav-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(140, 179, 105, 0.3);
+  }
+  
+  /* Ensure brand has enough space */
+  .feed-header .brand-link {
+    margin-right: 60px; /* Add margin to create separation */
+  }
+}
+
+/* Extra large screens - additional spacing */
+@media (min-width: 1400px) {
+  .feed-header .header-content {
+    padding: 0 60px; /* Even more padding on very large screens */
+  }
+  
+  .feed-header .nav-links {
+    gap: 50px; /* Larger gap for extra large screens */
+  }
+  
+  .feed-header .brand-link {
+    margin-right: 80px; /* More separation on large screens */
+  }
+}
+
 @media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  
   .header-content {
     flex-direction: column;
     gap: 16px;
@@ -2486,63 +2578,42 @@
 }
 
 @media (max-width: 768px) {
-  .feed-header {
-    padding: 16px 0;
+  .container {
+    padding: 0 20px;
   }
   
-  .header-content {
-    padding: 0 16px;
+  .projects-grid {
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   
-  .brand-text {
-    font-size: 1.25rem;
+  .project-card {
+    min-height: auto;
   }
   
-  .brand-icon {
-    font-size: 1.5rem;
-    margin-right: 8px;
-  }
-  
-  .nav-links {
+  .project-actions {
+    flex-direction: column;
     gap: 8px;
+    align-items: stretch;
   }
   
-  .user-menu {
-    gap: 8px;
-  }
-  
-  .user-greeting {
-    text-align: center;
+  .action-btn,
+  .btn {
     width: 100%;
-    margin-bottom: 8px;
+    justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
-  .feed-header {
-    padding: 12px 0;
+  .container {
+    padding: 0 16px;
   }
   
-  .nav-link {
-    padding: 6px 10px;
-    font-size: 13px;
+  .project-content {
+    padding: 16px;
   }
   
-  .btn-outline {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-  
-  .user-greeting {
-    font-size: 13px;
-  }
-  
-  .brand-text {
+  .project-title {
     font-size: 1.1rem;
-  }
-  
-  .brand-icon {
-    font-size: 1.3rem;
   }
 }
