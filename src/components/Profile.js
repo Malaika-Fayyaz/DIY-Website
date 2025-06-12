@@ -134,6 +134,7 @@ const Profile = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleDelete = async (projectId) => {
     if (
       !window.confirm(
@@ -175,6 +176,8 @@ const Profile = () => {
     }
   };
 
+=======
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
   const formatCost = (cost) => {
     return cost > 0 ? `$${cost}` : "Free";
   };
@@ -461,9 +464,17 @@ const Profile = () => {
                               </span>
                             </div>
                           </div>
+<<<<<<< HEAD
                           <p className="project-description">
                             {project.description}
                           </p>
+=======
+
+                          <p className="project-description">
+                            {project.description}
+                          </p>
+
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
                           <div className="project-stats">
                             <div className="stat-item">
                               <span>
@@ -484,6 +495,7 @@ const Profile = () => {
                             <div className="stat-item">
                               <span>👁️ {project.views || 0}</span>
                             </div>
+<<<<<<< HEAD
                           </div>{" "}
                           <div className="project-actions">
                             {profileData.user.isOwnProfile ? (
@@ -508,6 +520,12 @@ const Profile = () => {
                                 </Link>
                               </>
                             ) : (
+=======
+                          </div>
+
+                          <div className="project-actions">
+                            {!profileData.user.isOwnProfile && (
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
                               <>
                                 <button
                                   onClick={() => handleLike(project._id)}
@@ -525,6 +543,7 @@ const Profile = () => {
                                 >
                                   {project.isSaved ? "🔖" : "📌"} Save
                                 </button>
+<<<<<<< HEAD
                                 <Link
                                   to={`/project/${project._id}`}
                                   className="btn btn-primary btn-small"
@@ -533,6 +552,16 @@ const Profile = () => {
                                 </Link>
                               </>
                             )}
+=======
+                              </>
+                            )}
+                            <Link
+                              to={`/project/${project._id}`}
+                              className="btn btn-primary btn-small"
+                            >
+                              View Project
+                            </Link>
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
                           </div>
                         </div>
                       </div>

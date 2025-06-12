@@ -24,8 +24,12 @@ const EditProject = () => {
     steps: [{ stepNumber: 1, title: "", description: "", imageUrl: "" }],
     images: [{ url: "", isMainImage: true, caption: "" }],
     isPublished: true,
+<<<<<<< HEAD
     isFeatured: false,
   });
+=======
+    isFeatured: false,  });
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
 
   // Stabilize authentication data to prevent unnecessary re-renders
   const authData = useMemo(() => {
@@ -92,10 +96,15 @@ const EditProject = () => {
             project.images && project.images.length > 0
               ? project.images
               : [{ url: "", isMainImage: true, caption: "" }],
+<<<<<<< HEAD
           isPublished:
             project.isPublished !== undefined ? project.isPublished : true,
           isFeatured:
             project.isFeatured !== undefined ? project.isFeatured : false,
+=======
+          isPublished: project.isPublished !== undefined ? project.isPublished : true,
+          isFeatured: project.isFeatured !== undefined ? project.isFeatured : false,
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
         });
       } catch (err) {
         console.error("Fetch project error:", err);
@@ -105,8 +114,12 @@ const EditProject = () => {
         );
       } finally {
         setFetchingProject(false);
+<<<<<<< HEAD
       }
     };
+=======
+      }    };
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
 
     fetchProject();
   }, [projectId, authData.token, authData.user?.id]);
@@ -180,8 +193,12 @@ const EditProject = () => {
       console.log(
         "Updating project data:",
         JSON.stringify(processedData, null, 2)
+<<<<<<< HEAD
       );
       const authHeaders = {
+=======
+      );      const authHeaders = {
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
         headers: { Authorization: `Bearer ${authData.token}` },
       };
 
