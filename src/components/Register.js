@@ -37,11 +37,9 @@ const Register = () => {
       setError("Password must be at least 6 characters long!");
       setLoading(false);
       return;
-    }
-
-    try {
+    }    try {
       const { confirmPassword, ...dataToSend } = formData;
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:5000/api/auth/register",
         dataToSend
       );

@@ -62,7 +62,6 @@ const ProjectDetail = () => {
       alert("Failed to like project. Please try again.");
     }
   };
-
   const handleSave = async () => {
     if (!token) {
       alert("Please sign in to save projects!");
@@ -83,6 +82,21 @@ const ProjectDetail = () => {
     } catch (err) {
       console.error("Save error:", err);
       alert("Failed to save project. Please try again.");
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!window.confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
+      return;
+    }
+
+    try {
+      await axios.delete(`${API_BASE}/projects/${id}`, authHeaders);
+      alert("Project deleted successfully!");
+      navigate("/feed");
+    } catch (err) {
+      console.error("Delete error:", err);
+      alert("Failed to delete project. Please try again.");
     }
   };
 
@@ -168,20 +182,38 @@ const ProjectDetail = () => {
           <div className="header-nav">
             <Link to="/feed" className="back-btn">
               ← Back to Feed
-            </Link>
-            <div className="header-actions">
-              <button
-                onClick={handleLike}
-                className={`action-btn ${project.isLiked ? "liked" : ""}`}
-              >
-                {project.isLiked ? "❤️" : "🤍"} {project.likeCount}
-              </button>
-              <button
-                onClick={handleSave}
-                className={`action-btn ${project.isSaved ? "saved" : ""}`}
-              >
-                {project.isSaved ? "🔖" : "📌"} Save
-              </button>
+            </Link>            <div className="header-actions">
+              {project.isAuthor ? (
+                <>
+                  <Link
+                    to={`/edit/${project._id}`}
+                    className="action-btn edit-btn"
+                  >
+                    ✏️ Edit
+                  </Link>
+                  <button
+                    onClick={handleDelete}
+                    className="action-btn delete-btn"
+                  >
+                    🗑️ Delete
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={handleLike}
+                    className={`action-btn ${project.isLiked ? "liked" : ""}`}
+                  >
+                    {project.isLiked ? "❤️" : "🤍"} {project.likeCount}
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    className={`action-btn ${project.isSaved ? "saved" : ""}`}
+                  >
+                    {project.isSaved ? "🔖" : "📌"} Save
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -218,18 +250,23 @@ const ProjectDetail = () => {
             </div>
 
             <div className="project-info">
-              <h1 className="project-title">{project.title}</h1>
+              <h1 className="project-title">{project.title}</h1>{" "}
               <div className="project-meta">
                 <span className="category">{project.category}</span>
                 <span className="author">
-                  by <strong>{project.author.username}</strong>
+                  by{" "}
+                  <Link
+                    to={`/profile/${project.author._id}`}
+                    className="author-link"
+                  >
+                    <strong>{project.author.username}</strong>
+                  </Link>
                 </span>
                 <span className="date">
                   {new Date(project.createdAt).toLocaleDateString()}
                 </span>
               </div>
               <p className="project-description">{project.description}</p>
-
               <div className="project-stats">
                 <div className="stat">
                   <span className="stat-label">Estimated Time:</span>
