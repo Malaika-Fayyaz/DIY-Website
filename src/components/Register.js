@@ -38,13 +38,9 @@ const Register = () => {
       setLoading(false);
       return;
     }
-
     try {
       const { confirmPassword, ...dataToSend } = formData;
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        dataToSend
-      );
+      await axios.post("http://localhost:5000/api/auth/register", dataToSend);
 
       // Show success message and redirect to login
       alert("Registration successful! Please sign in with your new account.");
