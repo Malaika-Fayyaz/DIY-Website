@@ -2,6 +2,68 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// Image component with loading states
+const ProjectImage = ({
+  src,
+  alt,
+  className,
+  onError,
+  containerClassName = "",
+}) => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [imageSrc, setImageSrc] = useState(src);
+
+  useEffect(() => {
+    setImageSrc(src);
+    setLoading(true);
+    setError(false);
+  }, [src]);
+
+  const handleLoad = () => {
+    setLoading(false);
+  };
+
+  const handleError = () => {
+    setError(true);
+    setLoading(false);
+    if (onError) {
+      onError();
+    }
+    // Fallback to default image
+    setImageSrc(
+      "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800"
+    );
+  };
+
+  if (
+    error &&
+    imageSrc ===
+      "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800"
+  ) {
+    return (
+      <div className={`image-error ${containerClassName}`}>
+        <div className="image-error-icon">🖼️</div>
+        <div>Image not available</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={containerClassName}>
+      {loading && <div className="image-loading">Loading image...</div>}
+      <img
+        src={imageSrc}
+        alt={alt}
+        className={`${className} image-fade-in ${loading ? "" : "loaded"}`}
+        onLoad={handleLoad}
+        onError={handleError}
+        style={{ display: loading ? "none" : "block" }}
+      />
+    </div>
+  );
+};
+
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -62,7 +124,6 @@ const ProjectDetail = () => {
       alert("Failed to like project. Please try again.");
     }
   };
-
   const handleSave = async () => {
     if (!token) {
       alert("Please sign in to save projects!");
@@ -83,6 +144,35 @@ const ProjectDetail = () => {
     } catch (err) {
       console.error("Save error:", err);
       alert("Failed to save project. Please try again.");
+    }
+  };
+
+  const handleDelete = async () => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
+    if (
+      !window.confirm(
+        "Are you sure you want to delete this project? This action cannot be undone."
+      )
+    ) {
+<<<<<<< HEAD
+=======
+=======
+    if (!window.confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
+      return;
+    }
+
+    try {
+      await axios.delete(`${API_BASE}/projects/${id}`, authHeaders);
+      alert("Project deleted successfully!");
+      navigate("/feed");
+    } catch (err) {
+      console.error("Delete error:", err);
+      alert("Failed to delete project. Please try again.");
     }
   };
 
@@ -168,20 +258,48 @@ const ProjectDetail = () => {
           <div className="header-nav">
             <Link to="/feed" className="back-btn">
               ← Back to Feed
-            </Link>
+<<<<<<< HEAD
+            </Link>{" "}
             <div className="header-actions">
-              <button
-                onClick={handleLike}
-                className={`action-btn ${project.isLiked ? "liked" : ""}`}
-              >
-                {project.isLiked ? "❤️" : "🤍"} {project.likeCount}
-              </button>
-              <button
-                onClick={handleSave}
-                className={`action-btn ${project.isSaved ? "saved" : ""}`}
-              >
-                {project.isSaved ? "🔖" : "📌"} Save
-              </button>
+=======
+<<<<<<< HEAD
+            </Link>{" "}
+            <div className="header-actions">
+=======
+            </Link>            <div className="header-actions">
+>>>>>>> 360e473c2e640a4a356de71de506bfd95c3e0647
+>>>>>>> cfa35ccec7144611a27432c8eebdad683494626f
+              {project.isAuthor ? (
+                <>
+                  <Link
+                    to={`/edit/${project._id}`}
+                    className="action-btn edit-btn"
+                  >
+                    ✏️ Edit
+                  </Link>
+                  <button
+                    onClick={handleDelete}
+                    className="action-btn delete-btn"
+                  >
+                    🗑️ Delete
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={handleLike}
+                    className={`action-btn ${project.isLiked ? "liked" : ""}`}
+                  >
+                    {project.isLiked ? "❤️" : "🤍"} {project.likeCount}
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    className={`action-btn ${project.isSaved ? "saved" : ""}`}
+                  >
+                    {project.isSaved ? "🔖" : "📌"} Save
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -192,8 +310,9 @@ const ProjectDetail = () => {
         <div className="container">
           {/* Hero Section */}
           <section className="project-hero">
+            {" "}
             <div className="project-image-container">
-              <img
+              <ProjectImage
                 src={
                   project.images.find((img) => img.isMainImage)?.url ||
                   project.images[0]?.url ||
@@ -201,6 +320,7 @@ const ProjectDetail = () => {
                 }
                 alt={project.title}
                 className="project-main-image"
+                containerClassName="project-image-container"
               />
               <div className="project-badges">
                 <span
@@ -216,20 +336,24 @@ const ProjectDetail = () => {
                 )}
               </div>
             </div>
-
             <div className="project-info">
-              <h1 className="project-title">{project.title}</h1>
+              <h1 className="project-title">{project.title}</h1>{" "}
               <div className="project-meta">
                 <span className="category">{project.category}</span>
                 <span className="author">
-                  by <strong>{project.author.username}</strong>
+                  by{" "}
+                  <Link
+                    to={`/profile/${project.author._id}`}
+                    className="author-link"
+                  >
+                    <strong>{project.author.username}</strong>
+                  </Link>
                 </span>
                 <span className="date">
                   {new Date(project.createdAt).toLocaleDateString()}
                 </span>
               </div>
               <p className="project-description">{project.description}</p>
-
               <div className="project-stats">
                 <div className="stat">
                   <span className="stat-label">Estimated Time:</span>
@@ -254,7 +378,6 @@ const ProjectDetail = () => {
               </div>
             </div>
           </section>
-
           {/* Materials & Tools */}
           <section className="materials-tools-section">
             <div className="section-grid">
@@ -295,8 +418,7 @@ const ProjectDetail = () => {
                 </ul>
               </div>
             </div>
-          </section>
-
+          </section>{" "}
           {/* Steps */}
           <section className="steps-section">
             <h2 className="section-title">Step-by-Step Instructions</h2>
@@ -305,8 +427,17 @@ const ProjectDetail = () => {
                 <div key={step.stepNumber} className="step-item">
                   <div className="step-number">{step.stepNumber}</div>
                   <div className="step-content">
+                    {" "}
                     <h3 className="step-title">{step.title}</h3>
                     <p className="step-description">{step.description}</p>
+                    {step.imageUrl && (
+                      <ProjectImage
+                        src={step.imageUrl}
+                        alt={`Step ${step.stepNumber}: ${step.title}`}
+                        className="step-image"
+                        containerClassName="step-image-container"
+                      />
+                    )}
                     {step.tips && step.tips.length > 0 && (
                       <div className="step-tips">
                         <h4>💡 Tips:</h4>
@@ -322,7 +453,6 @@ const ProjectDetail = () => {
               ))}
             </div>
           </section>
-
           {/* Comments */}
           <section className="comments-section">
             <h2 className="section-title">Comments ({project.commentCount})</h2>
