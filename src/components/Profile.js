@@ -134,41 +134,6 @@ const Profile = () => {
     }
   };
 
-  const handleDelete = async (projectId) => {
-    if (!window.confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
-      return;
-    }
-
-    try {
-      await axios.delete(`${API_BASE}/projects/${projectId}`, authHeaders);
-      
-      // Remove the project from the list
-      setUserProjects((prev) => prev.filter((project) => project._id !== projectId));
-      
-      // Update pagination stats
-      setPagination((prev) => ({
-        ...prev,
-        totalProjects: prev.totalProjects - 1,
-      }));
-
-      // Update profile stats
-      if (profileData) {
-        setProfileData((prev) => ({
-          ...prev,
-          stats: {
-            ...prev.stats,
-            totalProjects: prev.stats.totalProjects - 1,
-          },
-        }));
-      }
-
-      alert("Project deleted successfully!");
-    } catch (err) {
-      console.error("Delete error:", err);
-      alert("Failed to delete project. Please try again.");
-    }
-  };
-
   const formatCost = (cost) => {
     return cost > 0 ? `$${cost}` : "Free";
   };
@@ -480,29 +445,10 @@ const Profile = () => {
                             <div className="stat-item">
                               <span>👁️ {project.views || 0}</span>
                             </div>
-                          </div>                          <div className="project-actions">
-                            {profileData.user.isOwnProfile ? (
-                              <>
-                                <Link
-                                  to={`/edit/${project._id}`}
-                                  className="action-btn edit-btn"
-                                >
-                                  ✏️ Edit
-                                </Link>
-                                <button
-                                  onClick={() => handleDelete(project._id)}
-                                  className="action-btn delete-btn"
-                                >
-                                  🗑️ Delete
-                                </button>
-                                <Link
-                                  to={`/project/${project._id}`}
-                                  className="btn btn-primary btn-small"
-                                >
-                                  View Project
-                                </Link>
-                              </>
-                            ) : (
+                          </div>
+
+                          <div className="project-actions">
+                            {!profileData.user.isOwnProfile && (
                               <>
                                 <button
                                   onClick={() => handleLike(project._id)}
@@ -520,14 +466,14 @@ const Profile = () => {
                                 >
                                   {project.isSaved ? "🔖" : "📌"} Save
                                 </button>
-                                <Link
-                                  to={`/project/${project._id}`}
-                                  className="btn btn-primary btn-small"
-                                >
-                                  View Project
-                                </Link>
                               </>
                             )}
+                            <Link
+                              to={`/project/${project._id}`}
+                              className="btn btn-primary btn-small"
+                            >
+                              View Project
+                            </Link>
                           </div>
                         </div>
                       </div>

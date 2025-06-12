@@ -1098,32 +1098,6 @@
   box-shadow: 0 6px 15px rgba(244, 162, 89, 0.4);
 }
 
-.action-btn.edit-btn {
-  border-color: var(--teal-blue);
-  background: linear-gradient(135deg, var(--teal-blue), var(--sage-green));
-  color: white;
-  box-shadow: 0 3px 10px rgba(91, 142, 125, 0.3);
-}
-
-.action-btn.edit-btn:hover {
-  background: linear-gradient(135deg, var(--sage-green), var(--teal-blue));
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(91, 142, 125, 0.4);
-}
-
-.action-btn.delete-btn {
-  border-color: var(--coral-red);
-  background: linear-gradient(135deg, var(--coral-red), #d63c47);
-  color: white;
-  box-shadow: 0 3px 10px rgba(188, 75, 81, 0.3);
-}
-
-.action-btn.delete-btn:hover {
-  background: linear-gradient(135deg, #d63c47, #c53030);
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(188, 75, 81, 0.4);
-}
-
 /* Pagination */
 .pagination {
   display: flex;

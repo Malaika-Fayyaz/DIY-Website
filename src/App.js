@@ -10,7 +10,6 @@ import Register from "./components/Register";
 import Feed from "./components/Feed";
 import ProjectDetail from "./components/ProjectDetail";
 import CreateProject from "./components/CreateProject";
-import EditProject from "./components/EditProject";
 import SavedProjects from "./components/SavedProjects";
 import Profile from "./components/Profile";
 import "./App.css";
@@ -26,7 +25,6 @@ function App() {
           <Route path="/feed" element={<Feed />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/create" element={<CreateProject />} />
-          <Route path="/edit/:projectId" element={<EditProject />} />
           <Route path="/saved" element={<SavedProjects />} />
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/profile" element={<Profile />} />
